@@ -199,7 +199,7 @@ const setTOTPSetup = component => {
   setComponent("TOTPSetup", component);
 };
 
-const withAuthenticator = (Comp, federated = null, theme = null) => {
+const withAuthenticator = (Comp, federated = null, theme = null, signUpConfig = {}) => {
   return class extends Component {
     authenticatorComponents = [];
     constructor(props) {
@@ -236,6 +236,7 @@ const withAuthenticator = (Comp, federated = null, theme = null) => {
       return (
         <AmplifyAuthenticator
           {...this.props}
+          signUpConfig={signUpConfig}
           theme={theme}
           federated={federated || this.props.federated}
           hideDefault={this.authenticatorComponents.length > 0}
